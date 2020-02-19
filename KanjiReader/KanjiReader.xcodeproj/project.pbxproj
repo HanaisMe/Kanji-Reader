@@ -54,14 +54,62 @@
 		BA004A4E23FCCA9F00E2F910 /* KanjiReader */ = {
 			isa = PBXGroup;
 			children = (
-				BA004A4F23FCCA9F00E2F910 /* AppDelegate.swift */,
-				BA004A5323FCCA9F00E2F910 /* ViewController.swift */,
-				BA004A5523FCCA9F00E2F910 /* Main.storyboard */,
-				BA004A5823FCCAA000E2F910 /* Assets.xcassets */,
-				BA004A5A23FCCAA000E2F910 /* LaunchScreen.storyboard */,
 				BA004A5D23FCCAA000E2F910 /* Info.plist */,
+				BA004A4F23FCCA9F00E2F910 /* AppDelegate.swift */,
+				BA004A6823FCCDF500E2F910 /* Common */,
+				BA004A6423FCCD8A00E2F910 /* Converter Scene */,
+				BA004A6623FCCDCA00E2F910 /* History Scene */,
+				BA004A6723FCCDE800E2F910 /* Entities */,
+				BA004A6523FCCDB000E2F910 /* Extensions */,
+				BA004A6323FCCD7B00E2F910 /* Resources */,
 			);
 			path = KanjiReader;
+			sourceTree = "<group>";
+		};
+		BA004A6323FCCD7B00E2F910 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA004A5A23FCCAA000E2F910 /* LaunchScreen.storyboard */,
+				BA004A5823FCCAA000E2F910 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BA004A6423FCCD8A00E2F910 /* Converter Scene */ = {
+			isa = PBXGroup;
+			children = (
+				BA004A5523FCCA9F00E2F910 /* Main.storyboard */,
+				BA004A5323FCCA9F00E2F910 /* ViewController.swift */,
+			);
+			path = "Converter Scene";
+			sourceTree = "<group>";
+		};
+		BA004A6523FCCDB000E2F910 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BA004A6623FCCDCA00E2F910 /* History Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "History Scene";
+			sourceTree = "<group>";
+		};
+		BA004A6723FCCDE800E2F910 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		BA004A6823FCCDF500E2F910 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
