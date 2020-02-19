@@ -16,7 +16,10 @@ enum ConverterStatus {
     case error
 }
 
-class ConverterViewController: UIViewController {
+class ConverterViewController: UIViewController, ViperView {
+    
+    typealias PresenterType = ConverterPresenter
+    var presenter: ConverterPresenter?
     
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var showHistoryButton: UIButton!
@@ -61,40 +64,49 @@ class ConverterViewController: UIViewController {
         inputTextView.delegate = self
         inputTextView.addToolBar(title: "Done", target: self, selector: #selector(finishEditing))
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
-        showHistoryButton.addTarget(self, action: #selector(transferToHistory), for: .touchUpInside)
+        showHistoryButton.addTarget(self, action: #selector(routeToHistory), for: .touchUpInside)
     }
     
     // MARK: - udpate views according to the status
     
-    private func updateView(status: ConverterStatus, ouputTextViewText: String? = nil) {
-        switch status {
-        case .noInput:
-            inputTextView.becomeFirstResponder()
-            outputTextView.setIsHiddenWithAnimation(to: true)
-            retryButton.setIsHiddenWithAnimation(to: true)
-            saveButton.setIsHiddenWithAnimation(to: true)
-            scrollViewfooterHeight.constant = 0
-        case .history:
-            outputTextView.setIsHiddenWithAnimation(to: false)
-            retryButton.setIsHiddenWithAnimation(to: true)
-            saveButton.setIsHiddenWithAnimation(to: false)
-            scrollViewfooterHeight.constant = 100
-        case .loading:
-            outputTextView.setIsHiddenWithAnimation(to: false)
-            outputTextView.text = ouputTextViewText
-        case .success:
-            outputTextView.setIsHiddenWithAnimation(to: false)
-            outputTextView.text = ouputTextViewText
-            retryButton.setIsHiddenWithAnimation(to: true)
-            saveButton.setIsHiddenWithAnimation(to: false)
-            scrollViewfooterHeight.constant = 100
-        case .error:
-            outputTextView.setIsHiddenWithAnimation(to: false)
-            outputTextView.text = ouputTextViewText
-            retryButton.setIsHiddenWithAnimation(to: false)
-            saveButton.setIsHiddenWithAnimation(to: true)
-            scrollViewfooterHeight.constant = 0
+    func updateView(status: ConverterStatus, ouputTextViewText: String? = nil) {
+        DispatchQueue.main.async {
+            switch status {
+            case .noInput:
+                self.inputTextView.becomeFirstResponder()
+                self.outputTextView.setIsHiddenWithAnimation(to: true)
+                self.retryButton.setIsHiddenWithAnimation(to: true)
+                self.saveButton.setIsHiddenWithAnimation(to: true)
+                self.scrollViewfooterHeight.constant = 0
+            case .history:
+                self.outputTextView.setIsHiddenWithAnimation(to: false)
+                self.retryButton.setIsHiddenWithAnimation(to: true)
+                self.saveButton.setIsHiddenWithAnimation(to: false)
+                self.scrollViewfooterHeight.constant = 100
+            case .loading:
+                self.outputTextView.setIsHiddenWithAnimation(to: false)
+                self.outputTextView.text = ouputTextViewText
+            case .success:
+                self.outputTextView.setIsHiddenWithAnimation(to: false)
+                self.outputTextView.text = ouputTextViewText
+                self.retryButton.setIsHiddenWithAnimation(to: true)
+                self.saveButton.setIsHiddenWithAnimation(to: false)
+                self.scrollViewfooterHeight.constant = 100
+            case .error:
+                self.outputTextView.setIsHiddenWithAnimation(to: false)
+                self.outputTextView.text = ouputTextViewText
+                self.retryButton.setIsHiddenWithAnimation(to: false)
+                self.saveButton.setIsHiddenWithAnimation(to: true)
+                self.scrollViewfooterHeight.constant = 0
+            }
         }
+    }
+    
+    func updateView(with history: History) {
+        segmentedControl.selectedSegmentIndex = OutputType(rawValue: history.outputType) == .hiragana ? 0 : 1
+        inputTextView.text = history.sentence
+        outputTextView.text = history.converted
+        updateView(status: .history)
     }
     
     // MARK: - actions
@@ -103,43 +115,22 @@ class ConverterViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @objc func transferToHistory() {
+    @objc func routeToHistory() {
         finishEditing()
-        let historyVC = Builder.buildHistoryScene()
-        self.navigationController?.pushViewController(historyVC, animated: true)
+        presenter?.router?.routeToHistory()
     }
     
     // MARK: - API calls
     
     @objc func tappedSaveButton() {
-        Worker.shared.addHistory(outputType: selectedOutputType,
-                                 sentence: inputTextView.text,
-                                 converted: outputTextView.text,
-                                 success: { // TODO: - handle success
-            print("success!")
-        }, failure: { (errorMessage) in // TODO: - handle failure
-            print(errorMessage)
-        })
+        presenter?.addHistory(outputType: selectedOutputType,
+                              sentence: inputTextView.text,
+                              converted: outputTextView.text)
     }
     
     @objc func convertInput() {
-        guard let input = inputTextView.text, !input.isEmpty else {
-            updateView(status: .noInput)
-            return
-        }
-        updateView(status: .loading, ouputTextViewText: "Loading...")
-
-        Worker.shared.getRubyCharacters(sentence: input,
-                                        outputType: selectedOutputType,
-                                        success: { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.updateView(status: .success, ouputTextViewText: result)
-            }
-        }, failure: { [weak self] (errorMessage) in
-            DispatchQueue.main.async {
-                self?.updateView(status: .error, ouputTextViewText: errorMessage)
-            }
-        })
+        presenter?.convert(input: inputTextView.text,
+                           outputType: selectedOutputType)
     }
 }
 
