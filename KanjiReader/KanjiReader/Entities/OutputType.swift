@@ -11,4 +11,13 @@ import Foundation
 enum OutputType: String {
     case hiragana = "hiragana"
     case katakana = "katakana"
+    
+    var displayName: String {
+        switch self {
+        case .hiragana:
+            return "ひらがな"
+        case .katakana:
+            return "カタカナ"
+        }
+    }
 }
