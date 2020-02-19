@@ -26,6 +26,7 @@
 		BA004A8023FCF45A00E2F910 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A7F23FCF45A00E2F910 /* HistoryViewController.swift */; };
 		BA004A8223FCF46F00E2F910 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8123FCF46F00E2F910 /* HistoryTableViewCell.swift */; };
 		BA004A8423FCF53C00E2F910 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA004A8323FCF53C00E2F910 /* History.storyboard */; };
+		BA004A8623FCFB4E00E2F910 /* ViperProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8523FCFB4E00E2F910 /* ViperProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BA004A7F23FCF45A00E2F910 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BA004A8123FCF46F00E2F910 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		BA004A8323FCF53C00E2F910 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		BA004A8523FCFB4E00E2F910 /* ViperProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViperProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				BA004A7723FCE13300E2F910 /* Builder.swift */,
+				BA004A8523FCFB4E00E2F910 /* ViperProtocols.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				BA004A8023FCF45A00E2F910 /* HistoryViewController.swift in Sources */,
 				BA004A5423FCCA9F00E2F910 /* ConverterViewController.swift in Sources */,
 				BA004A6C23FCD42C00E2F910 /* OutputType.swift in Sources */,
+				BA004A8623FCFB4E00E2F910 /* ViperProtocols.swift in Sources */,
 				BA004A7023FCD44C00E2F910 /* ConverterResponse.swift in Sources */,
 				BA004A6E23FCD43F00E2F910 /* ConverterRequest.swift in Sources */,
 				BA004A5023FCCA9F00E2F910 /* AppDelegate.swift in Sources */,
