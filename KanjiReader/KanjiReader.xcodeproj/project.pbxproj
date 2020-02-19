@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B9ACC49AD6043D10300F4DCC /* Pods_KanjiReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5399B7043DE94ACC26F614 /* Pods_KanjiReader.framework */; };
 		BA004A5023FCCA9F00E2F910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A4F23FCCA9F00E2F910 /* AppDelegate.swift */; };
-		BA004A5423FCCA9F00E2F910 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A5323FCCA9F00E2F910 /* ViewController.swift */; };
+		BA004A5423FCCA9F00E2F910 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A5323FCCA9F00E2F910 /* ConverterViewController.swift */; };
 		BA004A5723FCCA9F00E2F910 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA004A5523FCCA9F00E2F910 /* Main.storyboard */; };
 		BA004A5923FCCAA000E2F910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA004A5823FCCAA000E2F910 /* Assets.xcassets */; };
 		BA004A5C23FCCAA000E2F910 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA004A5A23FCCAA000E2F910 /* LaunchScreen.storyboard */; };
@@ -31,7 +31,7 @@
 		A719D92430D9F1998DF0A547 /* Pods-KanjiReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanjiReader.release.xcconfig"; path = "Target Support Files/Pods-KanjiReader/Pods-KanjiReader.release.xcconfig"; sourceTree = "<group>"; };
 		BA004A4C23FCCA9F00E2F910 /* KanjiReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA004A4F23FCCA9F00E2F910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA004A5323FCCA9F00E2F910 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA004A5323FCCA9F00E2F910 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		BA004A5623FCCA9F00E2F910 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA004A5823FCCAA000E2F910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA004A5B23FCCAA000E2F910 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				BA004A5523FCCA9F00E2F910 /* Main.storyboard */,
-				BA004A5323FCCA9F00E2F910 /* ViewController.swift */,
+				BA004A5323FCCA9F00E2F910 /* ConverterViewController.swift */,
 			);
 			path = "Converter Scene";
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 				BA004A7A23FCE2C800E2F910 /* UIViewEx.swift in Sources */,
 				BA004A7623FCD8D000E2F910 /* HistoryAPI.swift in Sources */,
 				BA004A6A23FCD42100E2F910 /* History.swift in Sources */,
-				BA004A5423FCCA9F00E2F910 /* ViewController.swift in Sources */,
+				BA004A5423FCCA9F00E2F910 /* ConverterViewController.swift in Sources */,
 				BA004A6C23FCD42C00E2F910 /* OutputType.swift in Sources */,
 				BA004A7023FCD44C00E2F910 /* ConverterResponse.swift in Sources */,
 				BA004A6E23FCD43F00E2F910 /* ConverterRequest.swift in Sources */,
