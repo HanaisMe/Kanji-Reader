@@ -26,7 +26,6 @@ class ConverterViewController: UIViewController, ViperView {
     @IBOutlet weak var outputTextView: UITextView!
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var scrollViewfooterHeight: NSLayoutConstraint!
     
     let segmentedControl = UISegmentedControl()
     
@@ -83,12 +82,10 @@ class ConverterViewController: UIViewController, ViperView {
                 self.outputTextView.setIsHiddenWithAnimation(to: true)
                 self.retryButton.setIsHiddenWithAnimation(to: true)
                 self.saveButton.setIsHiddenWithAnimation(to: true)
-                self.scrollViewfooterHeight.constant = 0
             case .history:
                 self.outputTextView.setIsHiddenWithAnimation(to: false)
                 self.retryButton.setIsHiddenWithAnimation(to: true)
                 self.saveButton.setIsHiddenWithAnimation(to: false)
-                self.scrollViewfooterHeight.constant = 100
             case .loading:
                 self.outputTextView.setIsHiddenWithAnimation(to: false)
                 self.outputTextView.text = ouputTextViewText
@@ -97,13 +94,11 @@ class ConverterViewController: UIViewController, ViperView {
                 self.outputTextView.text = ouputTextViewText
                 self.retryButton.setIsHiddenWithAnimation(to: true)
                 self.saveButton.setIsHiddenWithAnimation(to: false)
-                self.scrollViewfooterHeight.constant = 100
             case .error:
                 self.outputTextView.setIsHiddenWithAnimation(to: false)
                 self.outputTextView.text = ouputTextViewText
                 self.retryButton.setIsHiddenWithAnimation(to: false)
                 self.saveButton.setIsHiddenWithAnimation(to: true)
-                self.scrollViewfooterHeight.constant = 0
             }
         }
     }
