@@ -10,7 +10,7 @@ import UIKit
 
 enum Storyboard: String {
     case main = "Main"
-//    case history = "History"
+    case history = "History"
 }
 
 class Builder {
@@ -29,5 +29,10 @@ class Builder {
     static func buildMainScene() -> ConverterViewController {
         let mainVC: ConverterViewController = Builder.initiate(from: .main)
         return mainVC
+    }
+    
+    static func buildHistoryScene() -> HistoryViewController {
+        let historyVC: HistoryViewController = Builder.initiate(from: .history)
+        return historyVC
     }
 }

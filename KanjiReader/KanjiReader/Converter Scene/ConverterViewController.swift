@@ -105,6 +105,8 @@ class ConverterViewController: UIViewController {
     
     @objc func transferToHistory() {
         finishEditing()
+        let historyVC = Builder.buildHistoryScene()
+        self.navigationController?.pushViewController(historyVC, animated: true)
     }
     
     // MARK: - API calls
