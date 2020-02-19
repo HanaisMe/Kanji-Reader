@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum ConverterStatus {
+    case noInput
+    case loading
+    case history
+    case success
+    case error
+}
+
 class ConverterViewController: UIViewController {
     
     @IBOutlet weak var inputTextView: UITextView!
@@ -32,13 +40,9 @@ class ConverterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let input = inputTextView.text, !input.isEmpty {
-            outputTextView.setIsHiddenWithAnimation(to: false)
-            retryButton.setIsHiddenWithAnimation(to: true)
-            saveButton.setIsHiddenWithAnimation(to: false)
-            scrollViewfooterHeight.constant = 100
-            return
+            updateView(status: .history)
         } else {
-            inputTextView.becomeFirstResponder()
+            updateView(status: .noInput)
         }
     }
     
@@ -56,12 +60,41 @@ class ConverterViewController: UIViewController {
     private func setupContentView() {
         inputTextView.delegate = self
         inputTextView.addToolBar(title: "Done", target: self, selector: #selector(finishEditing))
-        outputTextView.isHidden = true
-        retryButton.isHidden = true
-        saveButton.isHidden = true
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
-        showHistoryButton.addTarget(self, action: #selector(tappedShowHistoryButton), for: .touchUpInside)
-        scrollViewfooterHeight.constant = 0
+        showHistoryButton.addTarget(self, action: #selector(transferToHistory), for: .touchUpInside)
+    }
+    
+    // MARK: - udpate views according to the status
+    
+    private func updateView(status: ConverterStatus, ouputTextViewText: String? = nil) {
+        switch status {
+        case .noInput:
+            inputTextView.becomeFirstResponder()
+            outputTextView.setIsHiddenWithAnimation(to: true)
+            retryButton.setIsHiddenWithAnimation(to: true)
+            saveButton.setIsHiddenWithAnimation(to: true)
+            scrollViewfooterHeight.constant = 0
+        case .history:
+            outputTextView.setIsHiddenWithAnimation(to: false)
+            retryButton.setIsHiddenWithAnimation(to: true)
+            saveButton.setIsHiddenWithAnimation(to: false)
+            scrollViewfooterHeight.constant = 100
+        case .loading:
+            outputTextView.setIsHiddenWithAnimation(to: false)
+            outputTextView.text = ouputTextViewText
+        case .success:
+            outputTextView.setIsHiddenWithAnimation(to: false)
+            outputTextView.text = ouputTextViewText
+            retryButton.setIsHiddenWithAnimation(to: true)
+            saveButton.setIsHiddenWithAnimation(to: false)
+            scrollViewfooterHeight.constant = 100
+        case .error:
+            outputTextView.setIsHiddenWithAnimation(to: false)
+            outputTextView.text = ouputTextViewText
+            retryButton.setIsHiddenWithAnimation(to: false)
+            saveButton.setIsHiddenWithAnimation(to: true)
+            scrollViewfooterHeight.constant = 0
+        }
     }
     
     // MARK: - actions
@@ -70,46 +103,39 @@ class ConverterViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @objc func tappedShowHistoryButton() {
+    @objc func transferToHistory() {
         finishEditing()
     }
     
+    // MARK: - API calls
+    
     @objc func tappedSaveButton() {
-        Worker.shared.addHistory(outputType: selectedOutputType, sentence: inputTextView.text, converted: outputTextView.text, success: {
+        Worker.shared.addHistory(outputType: selectedOutputType,
+                                 sentence: inputTextView.text,
+                                 converted: outputTextView.text,
+                                 success: { // TODO: - handle success
             print("success!")
-        }, failure: { (errorMessage) in
+        }, failure: { (errorMessage) in // TODO: - handle failure
             print(errorMessage)
         })
     }
     
-    // MARK: - API call
-    
     @objc func convertInput() {
         guard let input = inputTextView.text, !input.isEmpty else {
-            outputTextView.setIsHiddenWithAnimation(to: true)
-            retryButton.setIsHiddenWithAnimation(to: true)
-            saveButton.setIsHiddenWithAnimation(to: true)
-            scrollViewfooterHeight.constant = 0
+            updateView(status: .noInput)
             return
         }
-        outputTextView.setIsHiddenWithAnimation(to: false)
-        outputTextView.text = "Loading..."
+        updateView(status: .loading, ouputTextViewText: "Loading...")
 
         Worker.shared.getRubyCharacters(sentence: input,
-                                            outputType: selectedOutputType,
-                                            success: { (result) in
+                                        outputType: selectedOutputType,
+                                        success: { [weak self] (result) in
             DispatchQueue.main.async {
-                self.outputTextView.text = result
-                self.retryButton.setIsHiddenWithAnimation(to: true)
-                self.saveButton.setIsHiddenWithAnimation(to: false)
-                self.scrollViewfooterHeight.constant = -100
+                self?.updateView(status: .success, ouputTextViewText: result)
             }
-        }, failure: { (errorMessage) in
+        }, failure: { [weak self] (errorMessage) in
             DispatchQueue.main.async {
-                self.outputTextView.text = errorMessage
-                self.retryButton.setIsHiddenWithAnimation(to: false)
-                self.saveButton.setIsHiddenWithAnimation(to: true)
-                self.scrollViewfooterHeight.constant = 0
+                self?.updateView(status: .error, ouputTextViewText: errorMessage)
             }
         })
     }
