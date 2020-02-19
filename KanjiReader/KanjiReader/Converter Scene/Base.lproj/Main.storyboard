@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sce-VX-JpZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,20 +8,102 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Converter View Controller-->
+        <scene sceneID="RC6-Ta-g0e">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="KanjiReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="ConverterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sce-VX-JpZ" customClass="ConverterViewController" customModule="KanjiReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iR9-4h-JMn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jp-kJ-mBc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYM-jZ-eOT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="440"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cdM-f6-ilv">
+                                                <rect key="frame" x="20" y="220" width="374" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-Dg-pt6">
+                                                <rect key="frame" x="20" y="20" width="374" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="hi0-EC-Pbs"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cdM-f6-ilv" firstAttribute="height" relation="greaterThanOrEqual" secondItem="Vkr-Dg-pt6" secondAttribute="height" id="CwV-ht-o72"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vkr-Dg-pt6" secondAttribute="trailing" constant="20" symbolic="YES" id="HNI-N4-MeE"/>
+                                            <constraint firstItem="cdM-f6-ilv" firstAttribute="top" secondItem="Vkr-Dg-pt6" secondAttribute="bottom" id="aSY-Sb-b1W"/>
+                                            <constraint firstItem="cdM-f6-ilv" firstAttribute="trailing" secondItem="Vkr-Dg-pt6" secondAttribute="trailing" id="g4F-ye-7Vu"/>
+                                            <constraint firstItem="Vkr-Dg-pt6" firstAttribute="leading" secondItem="PYM-jZ-eOT" secondAttribute="leading" constant="20" symbolic="YES" id="jb1-TX-y07"/>
+                                            <constraint firstItem="cdM-f6-ilv" firstAttribute="leading" secondItem="Vkr-Dg-pt6" secondAttribute="leading" id="lax-lv-SeM"/>
+                                            <constraint firstItem="Vkr-Dg-pt6" firstAttribute="top" secondItem="PYM-jZ-eOT" secondAttribute="top" constant="20" symbolic="YES" id="rn4-iA-Tuu"/>
+                                            <constraint firstAttribute="bottom" secondItem="cdM-f6-ilv" secondAttribute="bottom" constant="20" symbolic="YES" id="uI9-2S-bmO"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sf7-m6-lW6">
+                                        <rect key="frame" x="190" y="448" width="34" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sf7-m6-lW6" firstAttribute="top" secondItem="PYM-jZ-eOT" secondAttribute="bottom" constant="8" id="6wC-sz-RJQ"/>
+                                    <constraint firstItem="PYM-jZ-eOT" firstAttribute="trailing" secondItem="EbZ-vA-Smv" secondAttribute="trailing" id="JRt-zW-uMo"/>
+                                    <constraint firstItem="PYM-jZ-eOT" firstAttribute="leading" secondItem="EbZ-vA-Smv" secondAttribute="leading" id="Lgz-qZ-JAE"/>
+                                    <constraint firstItem="PYM-jZ-eOT" firstAttribute="bottom" secondItem="EbZ-vA-Smv" secondAttribute="bottom" constant="-100" id="PsC-lI-2q7"/>
+                                    <constraint firstItem="PYM-jZ-eOT" firstAttribute="top" secondItem="EbZ-vA-Smv" secondAttribute="top" id="VWt-88-iWH"/>
+                                    <constraint firstItem="PYM-jZ-eOT" firstAttribute="width" secondItem="nX3-zp-gQM" secondAttribute="width" id="tgK-hs-aF0"/>
+                                    <constraint firstItem="sf7-m6-lW6" firstAttribute="centerX" secondItem="9jp-kJ-mBc" secondAttribute="centerX" id="zkM-9a-Nbn"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="EbZ-vA-Smv"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="nX3-zp-gQM"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jn-b3-42R">
+                                <rect key="frame" x="188.5" y="426" width="37" height="30"/>
+                                <state key="normal" title="Retry">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ac-wz-6ZA">
+                                <rect key="frame" x="160" y="824" width="94" height="30"/>
+                                <state key="normal" title="Go To History"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="cdM-f6-ilv" firstAttribute="bottom" secondItem="6Jn-b3-42R" secondAttribute="bottom" constant="8" id="FNp-2L-682"/>
+                            <constraint firstItem="9jp-kJ-mBc" firstAttribute="top" secondItem="Lwv-Ev-KtP" secondAttribute="top" id="M27-BF-DPV"/>
+                            <constraint firstItem="6Jn-b3-42R" firstAttribute="centerX" secondItem="Lwv-Ev-KtP" secondAttribute="centerX" id="Ue9-sK-keS"/>
+                            <constraint firstItem="Lwv-Ev-KtP" firstAttribute="trailing" secondItem="9jp-kJ-mBc" secondAttribute="trailing" id="nPJ-wv-ZUE"/>
+                            <constraint firstItem="9jp-kJ-mBc" firstAttribute="leading" secondItem="Lwv-Ev-KtP" secondAttribute="leading" id="qq7-Hr-4si"/>
+                            <constraint firstItem="5Ac-wz-6ZA" firstAttribute="centerX" secondItem="9jp-kJ-mBc" secondAttribute="centerX" id="u4J-5J-tiz"/>
+                            <constraint firstItem="Lwv-Ev-KtP" firstAttribute="bottom" secondItem="5Ac-wz-6ZA" secondAttribute="bottom" constant="8" id="uJH-ug-sqy"/>
+                            <constraint firstItem="Lwv-Ev-KtP" firstAttribute="bottom" secondItem="9jp-kJ-mBc" secondAttribute="bottom" id="yTe-1c-iem"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lwv-Ev-KtP"/>
                     </view>
+                    <connections>
+                        <outlet property="inputTextView" destination="Vkr-Dg-pt6" id="4Vk-LG-mNw"/>
+                        <outlet property="outputTextView" destination="cdM-f6-ilv" id="cCE-m5-NZt"/>
+                        <outlet property="retryButton" destination="6Jn-b3-42R" id="bPG-YM-8Gk"/>
+                        <outlet property="saveButton" destination="sf7-m6-lW6" id="mHp-CS-n16"/>
+                        <outlet property="showHistoryButton" destination="5Ac-wz-6ZA" id="Ccx-YG-QHO"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9FH-zS-wim" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="120"/>
+            <point key="canvasLocation" x="273.91304347826087" y="-244.41964285714283"/>
         </scene>
     </scenes>
 </document>
