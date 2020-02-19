@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RtO-uU-FvC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--History View Controller-->
+        <scene sceneID="n1w-Fc-2vm">
+            <objects>
+                <viewController storyboardIdentifier="HistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RtO-uU-FvC" customClass="HistoryViewController" customModule="KanjiReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bxy-d9-GyF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="25W-sh-1lY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="IIZ-IG-Eh6">
+                                    <rect key="frame" x="0.0" y="156" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell_ID" rowHeight="100" id="VPj-II-TO9" customClass="HistoryTableViewCell" customModule="KanjiReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VPj-II-TO9" id="KZf-M0-XzW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZk-qB-DS3">
+                                                    <rect key="frame" x="20" y="11" width="374" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="LKv-h2-TZb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cw-Ij-3wZ">
+                                                    <rect key="frame" x="20" y="44" width="374" height="45"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FZk-qB-DS3" firstAttribute="leading" secondItem="KZf-M0-XzW" secondAttribute="leadingMargin" id="HM5-3S-LP5"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2cw-Ij-3wZ" secondAttribute="bottom" id="MoN-Y1-e2u"/>
+                                                <constraint firstItem="2cw-Ij-3wZ" firstAttribute="top" secondItem="FZk-qB-DS3" secondAttribute="bottom" constant="8" symbolic="YES" id="QaL-iy-tg4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="FZk-qB-DS3" secondAttribute="trailing" id="RJk-fH-Lvi"/>
+                                                <constraint firstItem="2cw-Ij-3wZ" firstAttribute="leading" secondItem="FZk-qB-DS3" secondAttribute="leading" id="l7Z-da-hPF"/>
+                                                <constraint firstItem="2cw-Ij-3wZ" firstAttribute="trailing" secondItem="FZk-qB-DS3" secondAttribute="trailing" id="wTc-GH-iSN"/>
+                                                <constraint firstItem="FZk-qB-DS3" firstAttribute="top" secondItem="KZf-M0-XzW" secondAttribute="topMargin" id="zox-Sq-bre"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="2cw-Ij-3wZ" id="AoV-b4-149"/>
+                                            <outlet property="outputTypeLabel" destination="FZk-qB-DS3" id="sdV-pY-4tG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="25W-sh-1lY" firstAttribute="top" secondItem="mGW-zF-tRs" secondAttribute="top" id="184-XL-2XR"/>
+                            <constraint firstItem="25W-sh-1lY" firstAttribute="leading" secondItem="mGW-zF-tRs" secondAttribute="leading" id="65e-uf-YOJ"/>
+                            <constraint firstItem="mGW-zF-tRs" firstAttribute="bottom" secondItem="25W-sh-1lY" secondAttribute="bottom" id="dfk-vi-9qA"/>
+                            <constraint firstItem="mGW-zF-tRs" firstAttribute="trailing" secondItem="25W-sh-1lY" secondAttribute="trailing" id="kPM-yy-Tjr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mGW-zF-tRs"/>
+                    </view>
+                    <connections>
+                        <outlet property="historyTableview" destination="25W-sh-1lY" id="kCy-nY-ljJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9DA-vk-U0w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184.0579710144928" y="-247.09821428571428"/>
+        </scene>
+    </scenes>
+</document>
