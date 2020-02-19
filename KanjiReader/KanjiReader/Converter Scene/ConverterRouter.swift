@@ -13,7 +13,7 @@ class ConverterRouter: ViperRouter {
     weak var view: ConverterViewController?
     
     func routeToHistory() {
-        let historyVC = Builder.buildHistoryScene()
+        let historyVC = Builder.buildHistoryModule()
         view?.navigationController?.pushViewController(historyVC, animated: true)
     }
 }

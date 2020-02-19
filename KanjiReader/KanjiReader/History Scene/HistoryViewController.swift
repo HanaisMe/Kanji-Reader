@@ -8,10 +8,12 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, ViperView {
+
+    typealias PresenterType = HistoryPresenter
+    var presenter: HistoryPresenter?
     
     @IBOutlet weak var historyTableview: UITableView!
-    var histories = [History]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +24,13 @@ class HistoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Worker.shared.fetchHistories(success: { [weak self] (histories) in
-            self?.histories = histories
-            self?.historyTableview.reloadData()
-        }, failure: { (errorMessage) in // TODO: - handle failure
-            print(errorMessage)
-        })
+        presenter?.fetchHistories()
+    }
+    
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.historyTableview.reloadData()
+        }
     }
 }
 
@@ -36,7 +39,7 @@ class HistoryViewController: UIViewController {
 extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return histories.count
+        return presenter?.histories.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,20 +48,13 @@ extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell_ID", for: indexPath) as! HistoryTableViewCell
-        cell.setUI(with: histories[indexPath.row])
+        if let record = presenter?.histories[indexPath.row] {
+            cell.setUI(with: record)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for vc in (self.navigationController?.viewControllers ?? []) {
-            if let converterVC = vc as? ConverterViewController {
-                let record = histories[indexPath.row]
-                converterVC.segmentedControl.selectedSegmentIndex = OutputType(rawValue: record.outputType) == .hiragana ? 0 : 1
-                converterVC.inputTextView.text = record.sentence
-                converterVC.outputTextView.text = record.converted
-                _ = self.navigationController?.popToViewController(converterVC, animated: true)
-                break
-            }
-        }
+        presenter?.selectHistory(at: indexPath.row)
     }
 }

@@ -102,6 +102,13 @@ class ConverterViewController: UIViewController, ViperView {
         }
     }
     
+    func updateView(with history: History) {
+        segmentedControl.selectedSegmentIndex = OutputType(rawValue: history.outputType) == .hiragana ? 0 : 1
+        inputTextView.text = history.sentence
+        outputTextView.text = history.converted
+        updateView(status: .history)
+    }
+    
     // MARK: - actions
     
     @objc func finishEditing() {
