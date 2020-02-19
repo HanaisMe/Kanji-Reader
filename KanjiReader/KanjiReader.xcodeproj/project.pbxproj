@@ -22,6 +22,7 @@
 		BA004A7623FCD8D000E2F910 /* HistoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A7523FCD8D000E2F910 /* HistoryAPI.swift */; };
 		BA004A7823FCE13300E2F910 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A7723FCE13300E2F910 /* Builder.swift */; };
 		BA004A7A23FCE2C800E2F910 /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A7923FCE2C800E2F910 /* UIViewEx.swift */; };
+		BA004A7C23FCE98D00E2F910 /* UITextViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A7B23FCE98D00E2F910 /* UITextViewEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BA004A7523FCD8D000E2F910 /* HistoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAPI.swift; sourceTree = "<group>"; };
 		BA004A7723FCE13300E2F910 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		BA004A7923FCE2C800E2F910 /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
+		BA004A7B23FCE98D00E2F910 /* UITextViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BA004A7923FCE2C800E2F910 /* UIViewEx.swift */,
+				BA004A7B23FCE98D00E2F910 /* UITextViewEx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA004A7C23FCE98D00E2F910 /* UITextViewEx.swift in Sources */,
 				BA004A7A23FCE2C800E2F910 /* UIViewEx.swift in Sources */,
 				BA004A7623FCD8D000E2F910 /* HistoryAPI.swift in Sources */,
 				BA004A6A23FCD42100E2F910 /* History.swift in Sources */,
