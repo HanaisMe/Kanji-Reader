@@ -26,9 +26,19 @@ class Builder {
     
     // MARK: - Scene specific
     
-    static func buildMainScene() -> ConverterViewController {
-        let mainVC: ConverterViewController = Builder.initiate(from: .main)
-        return mainVC
+    static func buildConverterModule() -> ConverterViewController {
+        let view: ConverterViewController = self.initiate(from: .main)
+        let interactor = ConverterInteractor()
+        let presenter = ConverterPresenter()
+        let router = ConverterRouter()
+        // link
+        view.presenter = presenter
+        interactor.presenter = presenter
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
+        router.view = view
+        return view
     }
     
     static func buildHistoryScene() -> HistoryViewController {

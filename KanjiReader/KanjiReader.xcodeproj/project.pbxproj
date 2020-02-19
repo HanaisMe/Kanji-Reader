@@ -27,6 +27,9 @@
 		BA004A8223FCF46F00E2F910 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8123FCF46F00E2F910 /* HistoryTableViewCell.swift */; };
 		BA004A8423FCF53C00E2F910 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA004A8323FCF53C00E2F910 /* History.storyboard */; };
 		BA004A8623FCFB4E00E2F910 /* ViperProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8523FCFB4E00E2F910 /* ViperProtocols.swift */; };
+		BA004A8823FCFBFD00E2F910 /* ConverterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8723FCFBFD00E2F910 /* ConverterInteractor.swift */; };
+		BA004A8A23FCFC0800E2F910 /* ConverterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8923FCFC0800E2F910 /* ConverterPresenter.swift */; };
+		BA004A8C23FCFC1600E2F910 /* ConverterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA004A8B23FCFC1600E2F910 /* ConverterRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		BA004A8123FCF46F00E2F910 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		BA004A8323FCF53C00E2F910 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		BA004A8523FCFB4E00E2F910 /* ViperProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViperProtocols.swift; sourceTree = "<group>"; };
+		BA004A8723FCFBFD00E2F910 /* ConverterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterInteractor.swift; sourceTree = "<group>"; };
+		BA004A8923FCFC0800E2F910 /* ConverterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPresenter.swift; sourceTree = "<group>"; };
+		BA004A8B23FCFC1600E2F910 /* ConverterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,9 @@
 			children = (
 				BA004A5523FCCA9F00E2F910 /* Main.storyboard */,
 				BA004A5323FCCA9F00E2F910 /* ConverterViewController.swift */,
+				BA004A8723FCFBFD00E2F910 /* ConverterInteractor.swift */,
+				BA004A8923FCFC0800E2F910 /* ConverterPresenter.swift */,
+				BA004A8B23FCFC1600E2F910 /* ConverterRouter.swift */,
 			);
 			path = "Converter Scene";
 			sourceTree = "<group>";
@@ -301,14 +310,17 @@
 				BA004A6A23FCD42100E2F910 /* History.swift in Sources */,
 				BA004A8023FCF45A00E2F910 /* HistoryViewController.swift in Sources */,
 				BA004A5423FCCA9F00E2F910 /* ConverterViewController.swift in Sources */,
+				BA004A8823FCFBFD00E2F910 /* ConverterInteractor.swift in Sources */,
 				BA004A6C23FCD42C00E2F910 /* OutputType.swift in Sources */,
 				BA004A8623FCFB4E00E2F910 /* ViperProtocols.swift in Sources */,
 				BA004A7023FCD44C00E2F910 /* ConverterResponse.swift in Sources */,
+				BA004A8A23FCFC0800E2F910 /* ConverterPresenter.swift in Sources */,
 				BA004A6E23FCD43F00E2F910 /* ConverterRequest.swift in Sources */,
 				BA004A5023FCCA9F00E2F910 /* AppDelegate.swift in Sources */,
 				BA004A7223FCD52800E2F910 /* Worker.swift in Sources */,
 				BA004A7423FCD5E800E2F910 /* ConverterAPI.swift in Sources */,
 				BA004A7823FCE13300E2F910 /* Builder.swift in Sources */,
+				BA004A8C23FCFC1600E2F910 /* ConverterRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
