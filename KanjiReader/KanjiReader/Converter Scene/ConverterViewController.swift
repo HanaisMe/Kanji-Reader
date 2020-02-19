@@ -49,6 +49,13 @@ class ConverterViewController: UIViewController, ViperView {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if inputTextView.text.isEmpty {
+            inputTextView.becomeFirstResponder()
+        }
+    }
+    
     // MARK: - setup views when the view is being loaded
     
     private func setupTitleView() {
@@ -73,7 +80,6 @@ class ConverterViewController: UIViewController, ViperView {
         DispatchQueue.main.async {
             switch status {
             case .noInput:
-                self.inputTextView.becomeFirstResponder()
                 self.outputTextView.setIsHiddenWithAnimation(to: true)
                 self.retryButton.setIsHiddenWithAnimation(to: true)
                 self.saveButton.setIsHiddenWithAnimation(to: true)
